@@ -161,7 +161,7 @@
 </div>
 <div id="layer-toggle">
   <h3>Sightseekr Recommended...</h3>
-  <label><input type="checkbox" id="toggle-attractions" checked> <span class="icon icon-attraction"></span> Sightseeing</label><br>
+  <label><input type="checkbox" id="toggle-attractions" checked> <span class="icon icon-attraction"></span> Attractions</label><br>
   <label><input type="checkbox" id="toggle-restaurants" checked> <span class="icon icon-restaurant"></span> Restaurants</label><br>
   <label><input type="checkbox" id="toggle-bars" checked> <span class="icon icon-bar"></span> Bars</label><br>
   <label><input type="checkbox" id="toggle-cafes" checked> <span class="icon icon-cafe"></span> Cafes / Quick Bites</label>
@@ -184,146 +184,216 @@
     showUserHeading: true
 }), 'bottom-right');
 
-const savedPoints = [
+ const savedPoints = [
   { 
     name: "Cathedral of Saint John the Baptist",
-    tags: ["cathedral", "church", "fira", "views", "religious", "landmark"]
+    tags: ["cathedral", "church", "fira", "views", "religious", "landmark"],
+    coordinates: [25.4306474, 36.4205012],
+    description: "A cathedral in the centre of Fira with free entry"
   },
   { 
     name: "Artemis Karamolegos",
-    tags: ["winery", "wine", "tasting", "tour", "restaurant", "local food"]
+    tags: ["winery", "wine", "tasting", "tour", "restaurant", "local food"],
+    coordinates: [25.4636568, 36.3883511],
+    description: "An incredible vineyard offering wine tastings, tours, and even a restaurant with homemade, local speciality dishes."
   },
   { 
     name: "Skaros Rock",
-    tags: ["viewpoint", "fortress", "imerovigli", "hiking", "landmark", "scenic"]
+    tags: ["viewpoint", "fortress", "imerovigli", "hiking", "landmark", "scenic"],
+    coordinates: [25.4180815, 36.432357],
+    description: "An attraction and viewpoint close to Imerovigli. You can look at it from the path nearby, or walk down the stairs and up to the fortress for even more incredible views!"
   },
   { 
     name: "Metropolitan Church of the Presentation of the Lord",
-    tags: ["church", "orthodox", "fira", "religious", "landmark"]
+    tags: ["church", "orthodox", "fira", "religious", "landmark"],
+    coordinates: [25.4316957, 36.4169422],
+    description: "An Orthodox Church in the very centre of Fira with free entry. Take a look inside!!"
   },
   { 
     name: "Akrotiri archaeological site",
-    tags: ["archaeology", "history", "ancient", "akrotiri", "museum", "site"]
+    tags: ["archaeology", "history", "ancient", "akrotiri", "museum", "site"],
+    coordinates: [25.403447, 36.3517952],
+    description: "An archaeological site often referred to as the \"Pompeii\" of Greece. You do have to pay to enter, but if history is your thing, it's worth every penny!"
   },
   { 
     name: "Castle of Akrotiri",
-    tags: ["castle", "akrotiri", "history", "ruins", "landmark"]
+    tags: ["castle", "akrotiri", "history", "ruins", "landmark"],
+    coordinates: [25.396956, 36.3583363],
+    description: "Central to the village of Akrotiri, worth a wander to if you're in the area for the archaeological site"
   },
   { 
     name: "Red beach Akrotiri",
-    tags: ["beach", "red cliffs", "akrotiri", "scenic", "nature"]
+    tags: ["beach", "red cliffs", "akrotiri", "scenic", "nature"],
+    coordinates: [25.3939009, 36.3489129],
+    description: "A small beach with red cliffs (due to the high amounts of iron oxides in the rock)."
   },
   { 
     name: "Kamari beach",
-    tags: ["beach", "black sand", "kamari", "restaurants", "bars", "clubs", "swimming"]
+    tags: ["beach", "black sand", "kamari", "restaurants", "bars", "clubs", "swimming"],
+    coordinates: [25.485664, 36.3758655],
+    description: "A stunning black-sand beach lined with beach clubs. bars and restaurants. "
   },
   { 
     name: "Windmills Oía",
-    tags: ["oia", "windmills", "landmark", "instagram", "photo spot", "views"]
+    tags: ["oia", "windmills", "landmark", "instagram", "photo spot", "views"],
+    coordinates: [25.3723957, 36.4616624],
+    description: "The famous windmills of Oia that you'll have seen all over Instagram and Pinterest! Great for pictures."
   },
   { 
     name: "Three Bells of Fira",
-    tags: ["church", "fira", "blue dome", "iconic", "photo spot", "landmark"]
+    tags: ["church", "fira", "blue dome", "iconic", "photo spot", "landmark"],
+    coordinates: [25.4283259, 36.4233257],
+    description: "Typical white-walled, blue-domed churches of Santorini"
   },
   { 
     name: "Museum of Prehistoric Thera",
-    tags: ["museum", "prehistoric", "history", "artifacts", "thera", "archaeology"]
+    tags: ["museum", "prehistoric", "history", "artifacts", "thera", "archaeology"],
+    coordinates: [25.4326851, 36.4167947],
+    description: "A small museum housing a collection of prehistoric items from excavations on the island."
   },
   { 
     name: "Galanopoulos Art Gallery",
-    tags: ["art", "gallery", "oia", "culture", "independent"]
+    tags: ["art", "gallery", "oia", "culture", "independent"],
+    coordinates: [25.3749668, 36.4616553],
+    description: "A small, independent art gallery in Oia"
   },
   { 
     name: "Church of Agios Gerasimos",
-    tags: ["church", "blue dome", "religious", "landmark", "santorini"]
+    tags: ["church", "blue dome", "religious", "landmark", "santorini"],
+    coordinates: [25.4288033, 36.425389],
+    description: "A typical, blue-domed church - perfect for pictures."
   },
   { 
     name: "Santorini Cable Car",
-    tags: ["cable car", "transport", "fira", "old port", "views"]
+    tags: ["cable car", "transport", "fira", "old port", "views"],
+    coordinates: [25.4306148, 36.4202143],
+    description: "The upper station of the cable car in Fira, taking you down to the Old Port of Gialos."
   },
   { 
     name: "Perissa Beach",
-    tags: ["beach", "perissa", "clubs", "relaxing", "swimming"]
+    tags: ["beach", "perissa", "clubs", "relaxing", "swimming"],
+    coordinates: [25.4736829, 36.3537182],
+    description: "The beach of Perissa - another beautiful village to explore and a great place to walk by the sea, or relax in a beach club."
   },
   { 
     name: "Heart of Santorini",
-    tags: ["viewpoint", "sunset", "heart rock", "romantic", "scenic"]
+    tags: ["viewpoint", "sunset", "heart rock", "romantic", "scenic"],
+    coordinates: [25.4244262, 36.3757991],
+    description: "A viewpoint in Santorini with a heart-shaped gap in the rocks, overlooking the sea. A great place to watch the sunset."
   },
   { 
     name: "Ammoudi Bay",
-    tags: ["oia", "bay", "harbor", "seafood", "swimming", "boats"]
+    tags: ["oia", "bay", "harbor", "seafood", "swimming", "boats"],
+    coordinates: [25.3708202, 36.4607062],
+    description: "A beautiful bay just below the village of Oia"
   },
   { 
     name: "Boozery",
-    tags: ["cocktails", "takeaway", "bar", "sunset", "drinks"]
+    tags: ["cocktails", "takeaway", "bar", "sunset", "drinks"],
+    coordinates: [25.4308541, 36.4200473],
+    description: "A kiosk offering incredible takeaway cocktails! Grab one and then go to a viewpoint to watch a famous Santorini sunset."
   },
   { 
     name: "PK Cocktail Bar",
-    tags: ["cocktails", "bar", "views", "sunset", "drinks"]
+    tags: ["cocktails", "bar", "views", "sunset", "drinks"],
+    coordinates: [25.4315141, 36.4171766],
+    description: "The best views on the island, paired with delicious, handcrafted cocktails. What more could you ask for?"
   },
   { 
     name: "2 Brothers Bar Santorini",
-    tags: ["bar", "party", "fira", "nightlife", "drinks"]
+    tags: ["bar", "party", "fira", "nightlife", "drinks"],
+    coordinates: [25.4318519, 36.4180771],
+    description: "A lively bar in the heart of Fira, often with only standing room available"
   },
   { 
     name: "Volkan on the Rocks",
-    tags: ["bar", "restaurant", "cinema", "mamma mia", "sunset", "views"]
+    tags: ["bar", "restaurant", "cinema", "mamma mia", "sunset", "views"],
+    coordinates: [25.4283449, 36.4216389],
+    description: "Not just any bar or restaurant, this is the place that offers an open-air cinema screening of Mamma Mia! "
   },
   { 
     name: "Mango beach bar",
-    tags: ["bar", "kamari", "beach", "cocktails", "relaxing"]
+    tags: ["bar", "kamari", "beach", "cocktails", "relaxing"],
+    coordinates: [25.4857369, 36.376583],
+    description: "Right by the water at Kamari beach, this is the perfect place to sit back and relax with a drink."
   },
   { 
     name: "Triana Tavern",
-    tags: ["restaurant", "greek", "local food", "tavern", "authentic", "cheap", "food"]
+    tags: ["restaurant", "greek", "local food", "tavern", "authentic", "cheap", "food"],
+    coordinates: [25.4320335, 36.4201334],
+    description: "Affordable and authentic Greek tavern offering local speciality dishes and warm service"
   },
   { 
     name: "Katsaboo Bar & Restaurant",
-    tags: ["restaurant", "bar", "fira", "cocktails", "brunch", "dinner", "coffee", "food", "dinner", "pool"]
+    tags: ["restaurant", "bar", "fira", "cocktails", "brunch", "dinner", "coffee", "food", "dinner", "pool"],
+    coordinates: [25.4356586, 36.422289],
+    description: "An all-around favourite in Fira, whether you’re looking for coffee and brunch by the pool, or cocktails and an authentic Greek dinner. "
   },
   { 
     name: "Pelican Kipos cafe and wine restaurant",
-    tags: ["restaurant", "wine", "local food", "greek", "cafe", "food"]
+    tags: ["restaurant", "wine", "local food", "greek", "cafe", "food"],
+    coordinates: [25.4327089, 36.4183565],
+    description: "A restaurant with a great selection of local food and wine. Try the Vin Santo!"
   },
   { 
     name: "Karma restaurant Oia",
-    tags: ["restaurant", "oia", "greek", "healthy", "garden", "food", "organic"]
+    tags: ["restaurant", "oia", "greek", "healthy", "garden", "food", "organic"],
+    coordinates: [25.3748246, 36.4619308],
+    description: "A restaurant specialising in healthy, authentic Greek food served in their beautiful garden area."
   },
   { 
     name: "Aroma Avlis",
-    tags: ["restaurant", "winery", "local food", "greek", "food", "wine", "vineyard"]
+    tags: ["restaurant", "winery", "local food", "greek", "food", "wine", "vineyard"],
+    coordinates: [25.463305, 36.3881797],
+    description: "The restaurant at Artemis Karamolegos Winery"
   },
   { 
     name: "Pesto Restaurant",
-    tags: ["restaurant", "italian", "perissa", "pasta", "wine", "food"]
+    tags: ["restaurant", "italian", "perissa", "pasta", "wine", "food"],
+    coordinates: [25.469195, 36.3498768],
+    description: "A casual Italian restaurant in Perissa with delicious food and wine, right by the ocean."
   },
   { 
     name: "Filos Santorini",
-    tags: ["cafe", "souvlaki", "gyros", "quick bites", "takeaway", "food"]
+    tags: ["cafe", "souvlaki", "gyros", "quick bites", "takeaway", "food"],
+    coordinates: [25.4320396, 36.4192489],
+    description: "A quick souvlaki or gyros stop"
   },
   { 
     name: "Vitrin Cafe & Creperie",
-    tags: ["cafe", "crepes", "oia", "sunset", "affordable", "food", "cocktails", "dessert"]
+    tags: ["cafe", "crepes", "oia", "sunset", "affordable", "food", "cocktails", "dessert"],
+    coordinates: [25.3731924, 36.4610123],
+    description: "A sunset-view cafe and bar in Oia with affordable prices."
   },
   { 
     name: "Akrothiri",
-    tags: ["cafe", "akrotiri", "coffee", "brunch", "food"]
+    tags: ["cafe", "akrotiri", "coffee", "brunch", "food"],
+    coordinates: [25.3983639, 36.3576677],
+    description: "A great coffee and brunch spot in the village of Akrotiri"
   },
   { 
     name: "Nick The Grill",
-    tags: ["grill", "gyros", "souvlaki", "kebabs", "takeaway", "fira", "food", "greek"]
+    tags: ["grill", "gyros", "souvlaki", "kebabs", "takeaway", "fira", "food", "greek"],
+    coordinates: [25.4322328, 36.4180787],
+    description: "A casual stop to grab gyros, souvlaki or kebabs."
   },
   { 
     name: "Figo Pasta Bar",
-    tags: ["pasta", "bar", "cocktails", "takeaway", "fira", "food", "italian"]
+    tags: ["pasta", "bar", "cocktails", "takeaway", "fira", "food", "italian"],
+    coordinates: [25.4323203, 36.4177925],
+    description: "Fresh pasta and cocktails at affordable prices - there are a few seats outside, but mainly take-away is offered."
   },
   { 
     name: "Svoronos Bakery",
-    tags: ["bakery", "pastries", "coffee", "fira", "breakfast", "open late", "food"]
+    tags: ["bakery", "pastries", "coffee", "fira", "breakfast", "open late", "food"],
+    coordinates: [25.4320967, 36.4190468],
+    description: "A great little bakery in Fira offering fresh pastries and delicious coffee to go"
   },
   { 
     name: "FalafeLAND",
-    tags: ["vegan", "falafel", "fast food", "takeaway", "salads", "quick bites", "food"]
+    tags: ["vegan", "falafel", "fast food", "takeaway", "salads", "quick bites", "food"],
+    coordinates: [25.4335864, 36.4180847],
+    description: "A vegan takeaway / fast food spot specialising in falafels and salads"
   }
 ];
 
@@ -429,55 +499,68 @@ function createPopup(feature, lngLat, clicked = false) {
   }
 }
 
-  function searchAndZoomToFeature(name) {
-    for (let feature of allFeatures) {
-      const featureName = feature.properties?.name || feature.properties?.Name || feature.properties?.title;
-      if (featureName && featureName.toLowerCase().includes(name.toLowerCase())) {
-        const coords = feature.geometry.coordinates;
-        map.flyTo({ center: coords, zoom: 17 });
-        setTimeout(() => createPopup(feature, coords, true), 300);
-        return;
-      }
-    }
+function searchAndZoomToFeature(name) {
+  const lowerName = name.toLowerCase();
 
-    const allRenderedFeatures = map.queryRenderedFeatures();
-    for (let feature of allRenderedFeatures) {
-      const featureName = feature.properties?.name || feature.properties?.Name || feature.properties?.title;
-      if (featureName && featureName.toLowerCase().includes(name.toLowerCase())) {
-        const coords = feature.geometry.coordinates;
-        map.flyTo({ center: coords, zoom: 17 });
-        setTimeout(() => createPopup(feature, coords, true), 300);
-        return;
-      }
-    }
+  // 1️⃣ First: check all loaded features (includes description)
+  for (let feature of allFeatures) {
+    const featureName =
+      feature.properties?.name ||
+      feature.properties?.Name ||
+      feature.properties?.title;
 
-    const matchingPoint = savedPoints.find(point => 
-      point.name.toLowerCase().includes(name.toLowerCase())
-    );
-    if (matchingPoint) {
-      const layer = ['attractions', 'restaurants', 'bars', 'cafes'].find(l =>
-        map.getLayer(l) && map.getLayer(l).source === 'composite'
-      );
-      map.fitBounds([[-1.5, 53.3], [-0.8, 53.7]], { padding: 50 });
-      setTimeout(() => {
-        const features = map.queryRenderedFeatures({ layers: layer });
-        const foundFeature = features.find(f =>
-          (f.properties?.name || f.properties?.Name || f.properties?.title)?.toLowerCase().includes(name.toLowerCase())
-        );
-        if (foundFeature) {
-          const coords = foundFeature.geometry.coordinates;
-          map.flyTo({ center: coords, zoom: 17 });
-          setTimeout(() => createPopup(foundFeature, coords, true), 300);
-        } else {
-          alert(`Sorry, "${name}" was not found on the map. It may be outside the current data area or spelled differently.`);
-        }
-      }, 1000);
+    if (featureName && featureName.toLowerCase().includes(lowerName)) {
+      const coords = feature.geometry.coordinates;
+      map.flyTo({ center: coords, zoom: 17 });
+
+      setTimeout(() => createPopup(feature, coords, true), 300);
       return;
     }
-
-    alert(`"${name}" was not found. Please check the spelling or try a different search term.`);
   }
 
+  // 2️⃣ If not found, check currently rendered features (backup)
+  const rendered = map.queryRenderedFeatures();
+  for (let feature of rendered) {
+    const featureName =
+      feature.properties?.name ||
+      feature.properties?.Name ||
+      feature.properties?.title;
+
+    if (featureName && featureName.toLowerCase().includes(lowerName)) {
+      const coords = feature.geometry.coordinates;
+      map.flyTo({ center: coords, zoom: 17 });
+
+      setTimeout(() => createPopup(feature, coords, true), 300);
+      return;
+    }
+  }
+
+// 3️⃣ Use savedPoints (guaranteed list with coords)
+const matchingPoint = savedPoints.find(p => p.name.toLowerCase().includes(lowerName));
+if (matchingPoint) {
+  if (matchingPoint.coordinates) {
+    const directions = directionsLinks[matchingPoint.name] || `https://www.google.com/maps/search/${encodeURIComponent(matchingPoint.name)}`;
+    map.flyTo({ center: matchingPoint.coordinates, zoom: 17 });
+    setTimeout(() => {
+      currentPopup = new mapboxgl.Popup({ closeButton: false })
+        .setLngLat(matchingPoint.coordinates)
+        .setHTML(`
+          <div class="custom-popup">
+            <strong>${matchingPoint.name}</strong>
+            <p>${matchingPoint.description || ''}</p>
+            <a href="${directions}" class="directions-btn" target="_blank">
+              <span>📍</span> <span>Directions</span>
+            </a>
+          </div>
+        `)
+        .addTo(map);
+    }, 300);
+  } else {
+    alert('"' + matchingPoint.name + '": Coordinates not available.');
+  }
+  return;
+}
+}
   searchInput.addEventListener('input', () => {
     const query = searchInput.value.trim();
     suggestionsDiv.innerHTML = '';
